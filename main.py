@@ -11,6 +11,9 @@ import bs4
 from lxml import html
 import requests
 from time import sleep
+import datetime
+import os
+
 
 def download_img(url, file_name):
     #画像をダウンローします.
@@ -60,6 +63,8 @@ def getter(url):
                 
             #末尾をいじって なんかちっこいの=>iphone用 とする.
             text=text.replace("sticker_key@2x.png", "sticker@2x.png")
+            #text=text.replace("iphone", "android")
+            
             
             #URLが載っていない要素は何も返さないのでここで捨てる.
             if len(text)==0:
@@ -72,12 +77,12 @@ def getter(url):
 
 def saver(URL,savedir):
     l=getter(URL)
+    f=os.listdir(savedir)
+    f=[a for a in f if ".jpg" in a]
     for var in range(0,len(l)):
-        download_img(l[var], savedir+"//"+str(var)+".jpg")
-        sleep(1)
+        try:
+            download_img(l[var], savedir+"//"+str(var+len(f))+".jpg")
+            sleep(1)
+        except:
+            pass
         
-
-
-
-
-saver("https://store.line.me/stickershop/product/13758/ja","saver")
