@@ -6,15 +6,9 @@ Created on Sun Apr 21 20:51:39 2019
 @author: joil
 """
 
-import selenium
+
 import bs4
-from selenium import webdriver
-from selenium.webdriver import Chrome, ChromeOptions
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-import urllib.request
 from lxml import html
-from urllib import request
 import requests
 from time import sleep
 
